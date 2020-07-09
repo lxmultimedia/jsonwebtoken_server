@@ -53,10 +53,10 @@ router.post('/login', async (req, res) => {
     if(!validPass) return res.status(400).send('invalid password')
 
     //Create and assign token
-    const accesstoken = generateAccessToken(user._id)
+    const accessToken = generateAccessToken(user._id)
     const refreshToken = generateRefreshToken(user._id)
     refreshTokens.push(refreshToken)
-    res.header('auth-token', accesstoken).send({accesstoken, refreshToken})
+    res.header('auth-token', accessToken).status(200).send({accessToken, refreshToken})
 })
 
 //Get new Access Token
