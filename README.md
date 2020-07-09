@@ -1,6 +1,6 @@
-##jsonwebtoken_server
+## jsonwebtoken_server
 
-###Authentication Node.js API 
+### Authentication Node.js API 
 used with jsonwebtoken_client
 
 - Express
