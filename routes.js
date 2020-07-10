@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
     const accessToken = generateAccessToken(user._id)
     const refreshToken = generateRefreshToken(user._id)
     refreshTokens.push(refreshToken)
-    res.header('auth-token', accessToken).status(200).send({accessToken, refreshToken})
+    res.header('auth-token', accessToken).status(200).send({id: user._id, name: user.name, email: user.email, accessToken, refreshToken})
 })
 
 //Get new Access Token
@@ -79,7 +79,12 @@ router.delete('/logout', (req, res) => {
 
 //Protected route
 router.get('/protected', verify, (req, res) => {
-    res.json({posts: {title: 'my post', description: 'my description'}})
+    res.json({posts: {title: 'protected post', description: 'my description'}})
+})
+
+//Public route
+router.get('/public', (req, res) => {
+    res.json({posts: {title: 'public post', description: 'my description'}})
 })
 
 //Generate Access Token
